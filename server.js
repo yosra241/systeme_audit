@@ -7,6 +7,7 @@ const dbConnection =require("./config/database");
 const auditRoute = require("./routes/auditRoute");
 const taskRoutes = require('./routes/taskRoute');
 const rapportRoutes = require('./routes/rapportRoute');
+const utilisateurRoutes = require('./routes/utilisateurRoute');
 
 //connect with db
 dbConnection();
@@ -29,6 +30,7 @@ if(process.env.NODE_ENV == 'development'){
 app.use('/api/audits', auditRoute);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/rapports', rapportRoutes);
+app.use('/api/utilisateurs', utilisateurRoutes);
 
 
 const PORT = process.env.PORT || 8000;

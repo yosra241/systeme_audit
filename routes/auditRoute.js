@@ -1,8 +1,10 @@
 const express= require('express');
 
-const {getAudit} = require('../services/auditServices');
+const {getAudit,createAudit} = require('../services/auditServices');
+
 const router = express.Router();
-// Récupérer tous les audits
-router.get('/', getAudit );
+
+// Récupérer  et créer tous les audits
+router.route('/').get(getAudit).post(createAudit);
 
 module.exports= router;

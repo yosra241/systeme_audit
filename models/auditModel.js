@@ -2,15 +2,33 @@ const mongoose = require('mongoose');
 //1-Create Schema
 const AuditSchema = new mongoose.Schema({
     
-  _id_audit: String,
-  titre: String,
-  date_debut: Date,
-  date_fin: Date,
-  statut: String,
+  
+  titre: {
+    type: String,
+    //required: true
+  },
+    date_debut: {
+      type: Date,
+      //required: true
+    },
+    date_fin: {
+      //type: Date
+    },
+  statut: {
+    type: String,
+    enum: ['Planifié', 'En cours', 'Terminé', 'Annulé'],
+    default: 'Planifié'
+  }, 
+
+    // Référence au Chef de projet
   chef_projet: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'chef_projet'
-  }
+    ref: 'chef_projet',
+    //required: true
+
+  },
+    // Relation avec les tâches
+
 }, { timestamps: true });
 
   //2-Create  model
